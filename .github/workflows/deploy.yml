@@ -7,8 +7,4 @@ on:
 jobs:
   deploy:
     uses: khaoulahamza/devops-templates/.github/workflows/deploy.yml@main
-    with:
-      nexus_registry: 'localhost:8081'   # ← valeur forcée
-    secrets:
-      NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-      NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+    # plus besoin de secrets ni inputs
