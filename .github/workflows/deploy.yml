@@ -1,7 +1,9 @@
-- name: Allow insecure registry
-  run: |
-    echo '{"insecure-registries": ["localhost:8082"]}' | sudo tee /etc/docker/daemon.json
-    sudo systemctl restart docker
-- name: Docker login
-  run: echo "votre_mot_de_passe_admin" | docker login localhost:8082 -u admin --password-stdin
-# etc.
+name: Wind App CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    uses: khaoulahamza/devops-templates/.github/workflows/deploy.yml@main
