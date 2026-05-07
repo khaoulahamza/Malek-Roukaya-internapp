@@ -1,4 +1,4 @@
-ok je garde mon docker file ? # ---- Étape 1 : Build ---
+ # ---- Étape 1 : Build ---
 FROM node:20-alpine AS build
 WORKDIR /app
 
