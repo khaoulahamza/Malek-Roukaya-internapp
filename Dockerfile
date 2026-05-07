@@ -11,8 +11,8 @@ RUN npm install --legacy-peer-deps --prefer-offline --no-audit --progress=false
 # Copier tout le code source
 COPY . .
 
-# Build Angular
-RUN node --max_old_space_size=2048 ./node_modules/@angular/cli/bin/ng build --prod --optimization
+# Build Angular (--prod est déprécié, utiliser --configuration=production)
+RUN node --max_old_space_size=2048 ./node_modules/@angular/cli/bin/ng build --configuration=production --optimization
 
 # ---- Étape 2 : Serveur Nginx ---
 FROM nginx:stable-alpine
