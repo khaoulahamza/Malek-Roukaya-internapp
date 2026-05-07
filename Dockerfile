@@ -1,12 +1,20 @@
+# ---- Étape 1 : Build ---
 FROM node:20-alpine AS build
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm install --legacy-peer-deps
+# Optimisation : copier seulement package.json d'abord
+COPY src/package*.json ./
 
-COPY . .
-RUN npm run build --prod
+# Utiliser npm install avec cache
+RUN npm install --prefer-offline --no-audit --progress=false
 
+# Copier le reste du code
+COPY src/ .
+
+# Build avec optimisation mémoire
+RUN node --max_old_space_size=2048 ./node_modules/@angular/cli/bin/ng build --prod --optimization
+
+# ---- Étape 2 : Serveur Nginx ---
 FROM nginx:stable-alpine
 
 RUN rm /etc/nginx/conf.d/default.conf
