@@ -1,7 +1,10 @@
 name: Wind App CI/CD
+
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:   # permet un déclenchement manuel depuis l'onglet Actions
+
 jobs:
   deploy:
     uses: khaoulahamza/devops-templates/.github/workflows/deploy.yml@main
