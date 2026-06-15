@@ -15,7 +15,7 @@ export interface Permission {
 })
 export class PermissionService {
 
-  private apiUrl = 'http://localhost:8080/api'; // adapte si besoin
+  private apiUrl = '/api'; // adapte si besoin
 
   constructor(private http: HttpClient) {}
 

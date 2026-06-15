@@ -39,9 +39,9 @@ export interface LoginResponse {
   providedIn: 'root'
 })
 export class EntrepriseService {
-  private apiUrl = 'http://localhost:8080/api/entreprises';
-  private authUrl = 'http://localhost:8080/api/auth';
-  private passwordResetUrl = 'http://localhost:8080/api/password-reset';
+  private apiUrl = '/api/entreprises';
+  private authUrl = '/api/auth';
+  private passwordResetUrl = '/api/password-reset';
 
   constructor(private http: HttpClient) {}
 
@@ -107,6 +107,6 @@ export class EntrepriseService {
   }
 
   verifierEntrepriseIA(entrepriseData: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/ai/verify', entrepriseData);
+    return this.http.post('/api/ai/verify', entrepriseData);
   }
 }

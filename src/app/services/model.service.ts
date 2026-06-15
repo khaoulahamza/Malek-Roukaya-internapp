@@ -49,8 +49,8 @@ export interface DocumentModel {
   providedIn: 'root'
 })
 export class ModelService {
-  private apiUrl = 'http://localhost:8080/api/models';
-  private typeUrl = 'http://localhost:8080/api/types';
+  private apiUrl = '/api/models';
+  private typeUrl = '/api/types';
 
   constructor(private http: HttpClient) {}
 

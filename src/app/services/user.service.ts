@@ -20,7 +20,7 @@ export interface User {
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:8080/api'; // adapte
+  private apiUrl = '/api'; // adapte
 
   constructor(private http: HttpClient) {}
 

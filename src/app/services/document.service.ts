@@ -23,8 +23,8 @@ export interface DocumentModel {
 })
 export class DocumentService {
 
-  private baseApiUrl = 'http://localhost:8080/api';
-  private documentsApiUrl = 'http://localhost:8080/api/documents';
+  private baseApiUrl = '/api';
+  private documentsApiUrl = '/api/documents';
 
   constructor(private http: HttpClient) {}
 

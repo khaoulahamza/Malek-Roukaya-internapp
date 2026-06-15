@@ -7,7 +7,7 @@ import { FieldDimensions } from '../models/interfaces/field-dimensions.interface
   providedIn: 'root'
 })
 export class FieldDimensionsService {
-  private apiUrl = 'http://localhost:8080/api/field-dimensions';
+  private apiUrl = '/api/field-dimensions';
   private userId = 'user123'; // À remplacer par l'utilisateur connecté
 
   constructor(private http: HttpClient) {}

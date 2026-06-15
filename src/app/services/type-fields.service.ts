@@ -8,7 +8,7 @@ import { TypeConfig, TypeField } from '../models/interfaces/config/type-config.i
 })
 export class TypeFieldsService {
 
-  private apiUrl = 'http://localhost:8080/api/document-types';
+  private apiUrl = '/api/document-types';
 
   constructor(private http: HttpClient) {}
 
