@@ -306,7 +306,7 @@ export class NavbarComponent implements OnInit {
     }
 
     if (this.userType === 'ENTREPRISE') {
-      apiUrl = `http://localhost:8080/api/entreprises/${userId}/infos`;
+      apiUrl = `/api/entreprises/${userId}/infos`;
       body = {
         telephone: this.editTelephone?.e164Number || this.editTelephone || '',
         gouvernorat: this.editGouvernorat.trim(),
@@ -317,7 +317,7 @@ export class NavbarComponent implements OnInit {
       this.userType === 'SUPER_ADMIN' ||
       (this.currentUser && this.currentUser.role === 'ADMIN')
     ) {
-      apiUrl = `http://localhost:8080/api/users/${userId}/infos`;
+      apiUrl = `/api/users/${userId}/infos`;
       body = { nom: this.editNom.trim() };
     } else {
       this.infoError = 'Action non supportée.';
@@ -378,9 +378,9 @@ export class NavbarComponent implements OnInit {
 
     let apiUrl = '';
     if (this.userType === 'ENTREPRISE') {
-      apiUrl = `http://localhost:8080/api/entreprises/${userId}/password`;
+      apiUrl = `/api/entreprises/${userId}/password`;
     } else if (this.userType === 'USER' || this.userType === 'SUPER_ADMIN') {
-      apiUrl = `http://localhost:8080/api/users/${userId}/password`;
+      apiUrl = `/api/users/${userId}/password`;
     } else {
       this.passwordError = "Action non supportée.";
       return;
