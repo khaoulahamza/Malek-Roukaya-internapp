@@ -21,3 +21,5 @@ jobs:
       environment: ${{ github.event.inputs.environment || 'staging' }}
     secrets:
       GITOPS_TOKEN: ${{ secrets.GITOPS_TOKEN }}
+      ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+      ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
