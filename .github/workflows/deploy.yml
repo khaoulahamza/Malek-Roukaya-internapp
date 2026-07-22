@@ -16,7 +16,7 @@ on:
 
 jobs:
   deploy:
-    uses: winddevops-org/devops-templates/.github/workflows/deploy-template.yml@main
+    uses: winddevops-org/devops-templates/.github/workflows/deploy.yml@main
     with:
       environment: ${{ github.event.inputs.environment || 'staging' }}
     secrets:
