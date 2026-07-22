@@ -16,8 +16,7 @@ on:
 
 jobs:
   deploy:
-    # ✅ CHANGE THIS LINE TO POINT TO MONO-PIPELINE.YML
-    uses: winddevops-org/devops-templates/.github/workflows/mono-pipeline.yml@main
+    uses: winddevops-org/devops-templates/.github/workflows/deploy.yml@main
     with:
       environment: ${{ github.event.inputs.environment || 'staging' }}
     secrets:
