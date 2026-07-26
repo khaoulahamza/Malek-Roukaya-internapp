@@ -1,24 +1,24 @@
-name: CI/CD
+name: CI/CD Déploiement
 
 on:
   push:
-    branches: [main]
+    branches: [ "main" ]
   workflow_dispatch:
     inputs:
       environment:
-        description: Target Environment
+        description: 'Choisir l environnement de déploiement'
         required: true
-        default: staging
+        default: 'staging'
         type: choice
-        options:
-          - staging
-          - production
+          options:
+            - staging
+            - production
 
 jobs:
-  deploy:
+  call-deploy:
     uses: winddevops-org/devops-templates/.github/workflows/deploy.yml@main
     with:
-      environment: ${{ github.event.inputs.environment || 'staging' }}
+      environment: ${{ inputs.environment || 'staging' }}
     secrets:
       GITOPS_TOKEN: ${{ secrets.GITOPS_TOKEN }}
       ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
