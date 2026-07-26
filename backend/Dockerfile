@@ -1,5 +1,5 @@
 # ---- Étape 1 : Build ----
-FROM 192.168.1.239:8085/selfkhaoula/maven:3.9-eclipse-temurin-17 AS build
+FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
@@ -7,11 +7,13 @@ COPY src ./src
 RUN mvn clean package -DskipTests -B
 
 # ---- Étape 2 : Runtime ----
-FROM 192.168.1.239:8085/selfkhaoula/maven:3.9-eclipse-temurin-17
+FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-# Utiliser groupadd et useradd (compatibles Debian/Ubuntu)
-RUN groupadd -r spring && useradd -r -g spring spring
+
+# Création d'un utilisateur non-root sécurisé (Alpine utilise addgroup/adduser)
+RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
+
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
