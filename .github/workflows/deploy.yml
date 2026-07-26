@@ -10,9 +10,9 @@ on:
         required: true
         default: 'staging'
         type: choice
-          options:
-            - staging
-            - production
+        options:
+          - staging
+          - production
 
 jobs:
   call-deploy:
