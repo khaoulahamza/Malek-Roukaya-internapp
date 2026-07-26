@@ -16,9 +16,9 @@ on:
 
 jobs:
   call-deploy:
-    uses: winddevops-org/devops-templates/.github/workflows/deploy.yml@main
+    uses: winddevops-org/devops-templates/.github/workflows/mono-pipeline.yml@main
     with:
-      environment: ${{ inputs.environment || 'staging' }}
+      environment: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'staging' }}
     secrets:
       GITOPS_TOKEN: ${{ secrets.GITOPS_TOKEN }}
       ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
